@@ -8,6 +8,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import Cadastro from './pages/cadastro/Cadastro';
+import Navbar from './components/navbar/Navbar';
+import Home from './pages/home/Home';
 
 function App() {
   
@@ -16,10 +18,12 @@ function App() {
       <AuthProvider>
       <ToastContainer />
         <BrowserRouter>
+        <Navbar />
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/home" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
