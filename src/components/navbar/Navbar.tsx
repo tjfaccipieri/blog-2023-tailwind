@@ -23,10 +23,10 @@ function Navbar() {
             <h2 className='text-2xl font-bold uppercase'>Blog Pessoal</h2>
 
             <div className='flex gap-4'>
-              <Link to='' className='hover:underline'>Postagens</Link>
+              <Link to='/postagens' className='hover:underline'>Postagens</Link>
               <Link to='/temas' className='hover:underline'>Temas</Link>
               <Link to='/cadastroTema' className='hover:underline'>Cadastrar tema</Link>
-              <Link to='' className='hover:underline'>Perfil</Link>
+              <Link to='/perfil' className='hover:underline'>Perfil</Link>
               <Link to='' onClick={logout} className='hover:underline'>Sair</Link>
             </div>
           </div>
