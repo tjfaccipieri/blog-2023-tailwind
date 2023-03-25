@@ -14,17 +14,17 @@ function Navbar() {
         navigate('/login')
     }
 
-    let componentNavbar
+    let navbarComponent
 
     if(usuario.token !== "") {
-      componentNavbar = (
-        <div className='w-full bg-blue-800 text-white flex justify-center py-4'>
+      navbarComponent = (
+        <div className='w-full bg-sky-800 text-white flex justify-center py-4'>
           <div className="container flex justify-between text-lg">
             <h2 className='text-2xl font-bold uppercase'>Blog Pessoal</h2>
 
             <div className='flex gap-4'>
               <Link to='' className='hover:underline'>Postagens</Link>
-              <Link to='' className='hover:underline'>Temas</Link>
+              <Link to='/listaTemas' className='hover:underline'>Temas</Link>
               <Link to='' className='hover:underline'>Cadastrar tema</Link>
               <Link to='' className='hover:underline'>Perfil</Link>
               <Link to='' className='hover:underline'>Sair</Link>
@@ -36,7 +36,7 @@ function Navbar() {
 
   return (
     <>
-      {componentNavbar}
+      {navbarComponent}
     </>
   )
 }

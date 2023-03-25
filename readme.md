@@ -8,6 +8,7 @@ Libs necessárias para o projeto:
 * react-toastify
 * react-use-localstorage
 * axios
+* phosphor-icons
 
 ### Dev Dependencies
 * tailwindcss

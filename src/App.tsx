@@ -10,6 +10,9 @@ import { ToastContainer } from 'react-toastify';
 import Cadastro from './pages/cadastro/Cadastro';
 import Navbar from './components/navbar/Navbar';
 import Home from './pages/home/Home';
+import Footer from './components/footer/Footer';
+import ListaTemas from './components/temas/listaTemas/ListaTemas';
+import FormularioTema from './components/temas/formularioTema/FormularioTema';
 
 function App() {
   
@@ -19,12 +22,18 @@ function App() {
       <ToastContainer />
         <BrowserRouter>
         <Navbar />
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/home" element={<Home />} />
-          </Routes>
+          <div className='min-h-[80vh]'>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/listaTemas" element={<ListaTemas />} />
+              <Route path="/cadastroTema" element={<FormularioTema />} />
+              <Route path="/editarTema/:id" element={<FormularioTema />} />
+            </Routes>
+          </div>
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </>
