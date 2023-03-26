@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext';
 import UsuarioLogin from '../../models/UsuarioLogin';
+import { RotatingLines } from 'react-loader-spinner';
 
 function Login() {
   let navigate = useNavigate();
@@ -14,6 +15,8 @@ function Login() {
   );
 
   const { usuario, handleLogin } = useContext(AuthContext);
+
+  const {isLoading} = useContext(AuthContext) 
 
   useEffect(() => {
     if (usuario.token !== "") {
@@ -62,8 +65,15 @@ function login(e: ChangeEvent<HTMLFormElement>) {
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
-          <button  type='submit' className="disabled:bg-indigo-200 rounded bg-indigo-400 hover:bg-indigo-600 text-slate-100 w-1/2 py-2">
-            Entrar
+          <button  type='submit' className="disabled:bg-indigo-200 rounded bg-indigo-400 hover:bg-indigo-600 text-slate-100 w-1/2 py-2 flex justify-center">
+           {isLoading ? <RotatingLines
+            strokeColor="white"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="24"
+            visible={true}
+          /> :
+            <span>Entrar</span>}
           </button>
 
           <hr className="border-slate-800 w-full" />

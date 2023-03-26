@@ -1,29 +1,7 @@
-# Projeto Blog Pessoal - 2023
+import { XSquare } from '@phosphor-icons/react';
+import React, { useState } from 'react'
+import FormularioPostagem from '../formularioPostagem/FormularioPostagem';
 
-### Projeto criado com Vite + ContextAPI
-
-Libs necessárias para o projeto:
-### Dependencies
-* react-router-dom
-* react-toastify
-* react-use-localstorage
-* axios
-* phosphor-icons
-* react-loader-spinner
-
-### Dev Dependencies
-* tailwindcss
-* postcss
-* autoprefixer
-> Executar a configuração padrão do Tailwind, seguindo a documentação oficial
-
-
-### Configuração do modal
-link da página: [Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/react/modals/regular)
-
-foi usado o primeiro modal de exemplo (abaixo código ajustado)
-
-```TS
 function ModalPostagem() {
   const [showModal, setShowModal] = useState(false);
   return (
@@ -69,5 +47,3 @@ function ModalPostagem() {
 }
 
 export default ModalPostagem
-
-```

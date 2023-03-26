@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ListaPostagens from '../../components/postagens/listaPostagens/ListaPostagens'
+import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem'
 
 function Home() {
   return (
@@ -12,7 +13,7 @@ function Home() {
             <p className='text-xl'>Expresse aqui seus pensamentos e opniões</p>
 
             <div className="flex justify-around gap-4">
-              <Link to='/cadastroPostagem'><button className='rounded border hover:bg-white hover:text-blue-800 py-2 px-4'>Nova Postagem</button></Link>
+              <ModalPostagem />
               <button className='rounded bg-white text-blue-800 py-2 px-4'>Ver postagens</button>
             </div>
           </div>

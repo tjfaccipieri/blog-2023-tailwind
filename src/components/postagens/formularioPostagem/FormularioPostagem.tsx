@@ -127,7 +127,7 @@ function FormularioPostagem() {
   const carregandoTema = tema.descricao === '';
   return (
     <div className="container flex flex-col mx-auto items-center">
-      <h2>{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h2>
+      <h1 className="text-4xl text-center my-8">{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h1>
 
       <form onSubmit={gerarNovaPostagem} className="flex flex-col w-1/2 gap-4">
         <div className="flex flex-col gap-2">
@@ -165,7 +165,9 @@ function FormularioPostagem() {
             ))}
           </select>
         </div>
-        <button type='submit' className='rounded bg-indigo-300 hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto block py-2'>{id !== undefined ? 'Editar' : 'Cadastrar'}</button>
+        <button disabled={carregandoTema} type='submit' className='rounded disabled:bg-indigo-200 bg-indigo-300 hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto block py-2'>
+          {carregandoTema ? <span>Carregando</span> : id !== undefined ? 'Editar' : 'Cadastrar'}
+        </button>
       </form>
     </div>
   );
