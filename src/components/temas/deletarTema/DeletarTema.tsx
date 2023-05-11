@@ -12,15 +12,22 @@ function DeletarTema() {
 
     const { id } = useParams<{ id: string }>()
 
-    const { usuario } = useContext(AuthContext)
+    const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
 
     async function buscarPorId(id: string) {
-        await buscar(`/temas/${id}`, setTema, {
-            headers: {
-                'Authorization': token
-            } 
-        })
+        try {
+            await buscar(`/temas/${id}`, setTema, {
+                headers: {
+                    'Authorization': token
+                } 
+            })
+        } catch (error: any) {
+            if(error.toString().includes('403')) {
+                toastAlerta('O token expirou, favor logar novamente', 'info')
+                handleLogout()
+              }
+        }
     }
 
     useEffect(() => {

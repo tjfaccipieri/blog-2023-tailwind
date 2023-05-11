@@ -12,7 +12,7 @@ function FormularioTema() {
 
   const { id } = useParams<{ id: string }>();
 
-  const { usuario } = useContext(AuthContext);
+  const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
   async function buscarPorId(id: string) {
@@ -52,8 +52,14 @@ async function gerarNovoTema(e: ChangeEvent<HTMLFormElement>) {
           toastAlerta('Tema atualizado com sucesso', 'sucesso')
           retornar()
 
-      } catch (error) {
+      } catch (error: any) {
+        if(error.toString().includes('403')) {
+          toastAlerta('O token expirou, favor logar novamente', 'info')
+          handleLogout()
+        } else {
           toastAlerta('Erro ao atualizar o Tema', 'erro')
+        }
+          
       }
 
   } else {
@@ -66,8 +72,13 @@ async function gerarNovoTema(e: ChangeEvent<HTMLFormElement>) {
 
           toastAlerta('Tema cadastrado com sucesso', 'sucesso')
 
-      } catch (error) {
+      } catch (error: any) {
+        if(error.toString().includes('403')) {
+          toastAlerta('O token expirou, favor logar novamente', 'info')
+          handleLogout()
+        } else {
           toastAlerta('Erro ao cadastrado o Tema', 'erro')
+        }
       }
   }
 

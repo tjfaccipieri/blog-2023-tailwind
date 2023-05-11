@@ -12,7 +12,7 @@ function ListaPostagens() {
 
   let navigate = useNavigate();
 
-  const { usuario } = useContext(AuthContext);
+  const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
   useEffect(() => {
@@ -23,11 +23,18 @@ function ListaPostagens() {
   }, [token]);
 
   async function buscarPostagens() {
-    await buscar('/postagens', setPostagens, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    try {
+      await buscar('/postagens', setPostagens, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    } catch (error: any) {
+      if(error.toString().includes('403')) {
+        toastAlerta('O token expirou, favor logar novamente', 'info')
+        handleLogout()
+      }
+    }
   }
 
   useEffect(() => {

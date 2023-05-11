@@ -11,7 +11,7 @@ function FormularioPostagem() {
 
   const { id } = useParams<{ id: string }>();
 
-  const { usuario } = useContext(AuthContext);
+  const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
   const [temas, setTemas] = useState<Tema[]>([]);
@@ -102,11 +102,15 @@ function FormularioPostagem() {
             Authorization: token,
           },
         });
-
         toastAlerta('Postagem atualizada com sucesso', 'sucesso');
         retornar();
-      } catch (error) {
-        toastAlerta('Erro ao atualizar a Postagem', 'erro');
+      } catch (error: any) {
+        if(error.toString().includes('403')) {
+          toastAlerta('O token expirou, favor logar novamente', 'info')
+          handleLogout()
+        } else {
+          toastAlerta('Erro ao atualizar a Postagem', 'erro');
+        }
       }
     } else {
       try {
@@ -118,8 +122,13 @@ function FormularioPostagem() {
 
         toastAlerta('Postagem cadastrada com sucesso', 'sucesso');
         retornar();
-      } catch (error) {
-        toastAlerta('Erro ao cadastrar a Postagem', 'erro');
+      } catch (error: any) {
+        if(error.toString().includes('403')) {
+          toastAlerta('O token expirou, favor logar novamente', 'info')
+          handleLogout()
+        } else {
+          toastAlerta('Erro ao cadastrar a Postagem', 'erro');
+        }
       }
     }
   }
